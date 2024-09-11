@@ -1,0 +1,15 @@
+import json
+
+# Define your variables
+variables = {
+    "app": "myapp",
+    "env": "dev",
+    "account_id": "123456789012"
+}
+
+# Write the variables to a .tfvars file
+with open('variables.tfvars', 'w') as f:
+    for key, value in variables.items():
+        f.write(f'{key} = "{value}"\n')
+
+print("variables.tfvars file created successfully.")
