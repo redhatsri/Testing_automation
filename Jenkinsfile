@@ -3,13 +3,24 @@ pipeline {
     agent any
 
     environment {
-        AWS_ACCESS_KEY_ID     = credentials('aws-access-key-id')
-        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
         TF_VAR_app            = 'myapp'
         TF_VAR_env            = 'sbx'
         TF_VAR_account_id     = '474668421114'
     }
-
+ stages {
+        stage('ANS Demo') {
+            steps {
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'ons-dev',
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                ]]) {
+                    sh 'aws s3 ls'
+                }
+            }
+        }
+    }
     stages {
         stage('Checkout') {
             steps {
