@@ -1,0 +1,27 @@
+pipeline{
+2
+3-
+4-
+5
+agent any
+stages(
+stage("ANS Demo") {
+steps(
+withCredentials([[
+Sclass: 'AmazonWebServices CredentialsBinding",
+dredentialsId: 'ons-dev';
+accessKeyVariable: 'ARS ACCESS KEY_ID",
+secretKeyVariable: 'ARS SECRET ACCESS KEY']]) {
+sh "ows s3 ls"
+try sample Pipeline...
+7
+8
+9
+10-
+11
+12
+13
+14
+15
+16
+17}
