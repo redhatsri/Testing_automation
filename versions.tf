@@ -1,50 +1,28 @@
-2
-region var.region
-3
-<> त
-4
-assume_role {
-5
-role_arn = var.assume_role_arn
-6
-external_id var.assume_role_external_id
-7
-session_name = "terraform"
-8
+provider "aws" {
+  region = var.region
+
+  assume_role {
+    role_arn     = var.assume_role_arn
+    external_id  = var.assume_role_external_id
+    session_name = "terraform"
+  }
 }
-9
-10
+
 default_tags {
-11
-tags = {
-12
-Account
-13
-Creator
-"terraform"
-14
-15
-ResourceCostCenter "1100.US.660.403005.66002000"
-16
-ResourceOwner
-= "eec-aws-automotive-velocity-sand"
-ResourceBusinessUnit = "Automotive"
-"autoinfrastructure@experian.com"
-17
-Environment
-"sbx"
-18
-Product
-19
-Project
-20
-IAR
-21
-AppID
-"AMP"
-"PRJ0168817"
-"IAR01854"
-"22390"
-22
-23
-24}
+  tags = {
+    Account               = "your_account"
+    Creator               = "terraform"
+    ResourceCostCenter    = ".66002000"
+    ResourceOwner         = "eec-aws-automotive-velocity-sand"
+    ResourceBusinessUnit  = "Automotive"
+    ResourceEmail         = "autoinfrastructure@experian.com"
+    Environment           = "sbx"
+    Product               = "your_product"
+    Project               = "your_project"
+    IAR                   = "your_iar"
+    AppID                 = "AMP"
+    ProjectID             = "PRJ0168817"
+    IARID                 = "IAR01854"
+    CostCenterID          = "22390"
+  }
+}
